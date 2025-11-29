@@ -17,7 +17,7 @@ body {
     min-height: 100vh; /* En az Görünüm Alanı Yüksekliği */
     
     /* Arka plan görseli stilleri */
-    background-image: url('menu_arkaplan.jpg'); /* DOSYA YOLUNUZU KONTROL EDİN */
+    background-image: url('menu_arka_plan2.jpg'); /* DOSYA YOLUNUZU KONTROL EDİN */
     
     /* 🔴 GÜNCELLEME 1: Resim boyutunu otomatik yapıyoruz */
     background-size: cover; 
