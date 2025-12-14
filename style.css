@@ -459,7 +459,6 @@ z-index: 1; /* Navigasyon z-index: 9999'dan çok daha düşük */
 }
 a {
     /* Varsayılan Rengi (Maviyi) Beyaz Yapın */
-    color: white !important; /* !important eklemek, diğer kuralları geçersiz kılar */
     text-decoration: none !important; /* Alt çizgiyi kaldırır */
 }
 
