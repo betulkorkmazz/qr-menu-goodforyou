@@ -7,6 +7,7 @@ html {
 }
 
 body {
+    overflow-x: hidden;
     font-family: 'Open Sans', sans-serif, Arial;
     margin: 0;
     padding: 0;
@@ -15,7 +16,7 @@ body {
     /* 🟢 KRİTİK DÜZELTME 1: Sticky'nin çalışması için boyutları zorla */
     width: 100vw; /* Tam Görünüm Alanı Genişliği */
     min-height: 100vh; /* En az Görünüm Alanı Yüksekliği */
-    
+    scroll-padding-top: 70px; /* Navigasyonun yüksekliği (yaklaşık 50px) + biraz boşluk (20px) */
     /* Arka plan görseli stilleri */
     background-image: url('menu_arka_plan2.jpg'); /* DOSYA YOLUNUZU KONTROL EDİN */
     
