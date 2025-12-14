@@ -15,8 +15,18 @@
 
     body {
       background-image: url('menu_arkaplan.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #333333;
 
     }
+    @media (max-width: 768px) {
+    body {
+        /* Mobil cihazlarda "fixed" sorun yaratır, bu yüzden kaldırıyoruz. */
+        background-attachment: scroll; 
+    }
+}
 
     .welcome-container {
         /* Tüm ekranı kapla ve içeriği dikeyde ortala */

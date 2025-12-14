@@ -21,16 +21,19 @@ body {
     background-image: url('menu_arka_plan2.jpg'); /* DOSYA YOLUNUZU KONTROL EDİN */
     
     /* 🔴 GÜNCELLEME 1: Resim boyutunu otomatik yapıyoruz */
-    background-size: cover; 
-    
-    background-position: center top; /* Ortadan değil, üstten başlasın */
-    background-attachment: fixed; /* Sayfa ile birlikte kaysın, daha iyi kapsama için */
+    background-size: initial; 
+    background-position: center center; /* Ortadan değil, üstten başlasın */
+    background-attachment: scroll; /* Sayfa ile birlikte kaysın, daha iyi kapsama için */
     
     /* 🔴 GÜNCELLEME 2: Görseli yatayda ve dikeyde tekrarla */
-    background-repeat: no-repeat; 
+    background-repeat: repeat-y; 
     
     line-height: 1.6;
 }
+@media (min-width: 769px) {
+    body {
+        background-attachment: fixed;
+    }}
 /* ===============================
   02. ÜST BAŞLIK (GOOD FOR YOU) STİLİ
   =============================== */
@@ -453,4 +456,23 @@ z-index: 1; /* Navigasyon z-index: 9999'dan çok daha düşük */
     .social-links-wrapper {
         justify-content: flex-start;
     }
+}
+a {
+    color: white !important;
+    /* Varsayılan Rengi (Maviyi) Beyaz Yapın */
+    text-decoration: none !important; /* Alt çizgiyi kaldırır */
+}
+
+a:visited {
+    /* Tıklanmış linklerin rengini de beyaz yapın (Koyu mor/mavi olmasını engeller) */
+    color: white !important;
+}
+
+a:hover,
+a:focus,
+a:active {
+    /* Fare üzerine gelme, odaklanma veya tıklama anındaki rengi de beyaz yapın */
+    color: white !important; 
+    /* Eğer klavye ile odaklanıldığında çıkan çerçeveyi kaldırmak istiyorsanız: */
+    outline: none !important; 
 }
