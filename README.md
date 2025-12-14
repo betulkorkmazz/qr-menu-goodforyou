@@ -6,9 +6,6 @@ Bu depo, Good For You Coffee Shop için hazırlanan responsive (mobil uyumlu) QR
 
 ## 🔗 CANLI BAĞLANTI (QR Kod Adresi)
 
-QR kodunuzun yönlendirdiği güncel web adresi buraya eklenecektir:
-
-[Canlı Menü Adresi] (Örn: https://incandescent-dasik-e9b2dc.netlify.app/)
 
 ---
 
