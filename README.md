@@ -5,7 +5,7 @@ Bu depo, Good For You Coffee Shop için hazırlanan responsive (mobil uyumlu) QR
 ---
 
 ## 🔗 CANLI BAĞLANTI (QR Kod Adresi)
-
+https://qr-menu-goodforyou.vercel.app/menu.html
 
 ---
 
