@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Good For You</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+
+    <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf3);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.admin-box {
+  background: white;
+  padding: 25px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.admin-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+}
+
+select, input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #574fd6;
+}
+
+.info {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  margin-top: 10px;
+}
+</style>
+  </head>
+
+  <body>
+
+    <div class="admin-box">
+      <h2>☕ Fiyat Yönetimi</h2>
+
+      <label>Ürün Seç</label>
+      <select id="urunSelect"></select>
+
+      <label>Yeni Fiyat (₺)</label>
+      <input type="number" id="yeniFiyat" placeholder="Örn: 150">
+
+      <button onclick="guncelle()">Fiyatı Güncelle</button>
+
+      <div class="info">
+        GitHub Pages için JSON manuel güncellenir
+      </div>
+    </div>
+
+    <script>
+let urunler = [];
+
+fetch("menu_data.json")
+  .then(res => {
+    if (!res.ok) throw new Error("JSON okunamadı");
+    return res.json();
+  })
+  .then(data => {
+    urunler = data;
+    const select = document.getElementById("urunSelect");
+
+    data.forEach(u => {
+      const opt = document.createElement("option");
+      opt.value = u.html_id;
+      opt.textContent = `${u.name} (${u.fiyat}₺)`;
+      select.appendChild(opt);
+    });
+  })
+  .catch(err => {
+    alert("Ürünler yüklenemedi ❌");
+    console.error(err);
+  });
+
+function guncelle() {
+  const id = document.getElementById("urunSelect").value;
+  const fiyat = document.getElementById("yeniFiyat").value;
+
+  const urun = urunler.find(u => u.html_id === id);
+  urun.fiyat = Number(fiyat);
+
+  alert(
+    "✅ Fiyat güncellendi\n\n" +
+    "Console'dan güncel JSON'u kopyala\n" +
+    "menu_data.json dosyasını elle değiştir"
+  );
+
+  console.log("📦 GÜNCEL JSON:");
+  console.log(JSON.stringify(urunler, null, 2));
+}
+</script>
+
+  </body>
+</html>
