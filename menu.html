@@ -686,5 +686,54 @@
         });
     });
     </script>
+                    <script>
+        // API'mizin çalıştığı ve fiyatları JSON formatında sunduğu adres.
+        // API projesi bilgisayarınızda (localhost) çalıştığı sürece bu adres geçerlidir.
+        const API_URL = "https://localhost:7078/api/menu"; 
+
+        // Fiyatları çeken ve menüye yerleştiren ana fonksiyon
+        async function fetchAndDisplayPrices() {
+            try {
+                // Tarayıcılar, yerel HTTPS adreslerinden veri çekerken bazen güvenlik uyarısı verir.
+                // Bu uyarıyı geçmeniz veya tarayıcınıza güvenli olarak eklemeniz gerekebilir.
+                const response = await fetch(API_URL);
+
+                if (!response.ok) {
+                    console.error(`API'den hata döndü: ${response.status}`);
+                    return;
+                }
+
+                const urunler = await response.json(); 
+
+                // Her bir ürünü döngüye alıp HTML'e yerleştirme
+                urunler.forEach(urun => {
+                    // HTML dosyamızdaki ID'yi buluyoruz (Örn: fiyat-latte)
+                    const fiyatElement = document.getElementById(urun.html_id); 
+
+                    if (fiyatElement) {
+                        // Fiyatı TL formatında gösteriyoruz (Örn: 120,00 TL)
+                        const formattedFiyat = urun.fiyat.toLocaleString('tr-TR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        });
+
+                        fiyatElement.textContent = `${formattedFiyat} TL`; // Fiyatı sayfaya yazdır
+                    }
+                });
+
+                console.log("Fiyatlar başarıyla veritabanından çekildi ve menüye yerleştirildi.");
+
+            } catch (error) {
+                console.error("Fiyat çekme işleminde bir hata oluştu:", error);
+            }
+        }
+
+        // Sayfa yüklendiğinde fonksiyonu çalıştır
+        document.addEventListener('DOMContentLoaded', fetchAndDisplayPrices);
+    </script>
+
                 </body>
             </html>
+
+        </body>
+    </html>
